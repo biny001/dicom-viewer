@@ -25,3 +25,43 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .app {
+    @apply text-center  h-[100%];
+  }
+}
+
+@layer components {
+  .dwv {
+    @apply h-[90%];
+  }
+
+  .button-row {
+    @apply text-center;
+  }
+
+  /* .layerGroup {
+    @layer relative p-0 flex justify-center height-[90%];
+  } */
+
+  .layer {
+    @apply absolute pointer-events-none;
+  }
+
+  .drawDiv {
+    @apply absolute pointer-events-none;
+  }
+
+  .dropBox {
+    @apply m-auto text-center  align-middle w-[50%] h-[75%];
+  }
+
+  .dropBoxBorder {
+    @apply border-4 border-dashed border-[#e8eaf6] hover:border-[#3f51b5];
+  }
+
+  .input-file-link {
+    @apply underline;
+  }
+}
