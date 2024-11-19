@@ -41,9 +41,9 @@ body {
     @apply text-center;
   }
 
-  /* .layerGroup {
-    @layer relative p-0 flex justify-center height-[90%];
-  } */
+  .layerGroup {
+    @apply relative p-0 flex flex-col gap-10 justify-center;
+  }
 
   .layer {
     @apply absolute pointer-events-none;

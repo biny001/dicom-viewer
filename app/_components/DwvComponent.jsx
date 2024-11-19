@@ -178,13 +178,14 @@ const DwvComponent = () => {
   }, [dataLoaded]);
 
   return (
-    <div className="p-4 bg-gray-50 min-h-screen">
-      <h1 className="text-xl font-bold mb-4">DwvComponent</h1>
-      <div id="layerGroup0" className="  border rounded-md p-4 bg-white">
-        <div
-          id={dropboxDivId}
-          className="border-2 border-dashed border-gray-400 rounded-md p-4 text-center"
-        >
+    <div className="p-4 bg-gray-50 min-h-screen flex flex-col space-y-4">
+      <div
+        id={dropboxDivId}
+        className={`border-2 border-dashed border-gray-400 rounded-md p-4 text-center ${
+          dataLoaded ? "h-12" : "h-32"
+        } transition-all duration-300`}
+      >
+        {!dataLoaded && (
           <p className="text-sm text-gray-600">
             Drag and drop data here or{" "}
             <label
@@ -194,14 +195,26 @@ const DwvComponent = () => {
               click here
             </label>
           </p>
-          <input
-            id="input-file"
-            type="file"
-            multiple="false"
-            className="hidden"
-            onChange={onInputFile}
-          />
-        </div>
+        )}
+        <input
+          id="input-file"
+          type="file"
+          className="hidden"
+          onChange={onInputFile}
+        />
+      </div>
+
+      <div
+        id="layerGroup0"
+        className={`border rounded-md p-4 bg-white flex-grow transition-all duration-300 ${
+          dataLoaded ? "h-[calc(100vh-50px)]" : "h-[calc(100vh-300px)]"
+        }`}
+      >
+        {dataLoaded ? (
+          <p className="text-gray-600 text-center">Image Viewer Loaded</p>
+        ) : (
+          <p className="text-gray-600 text-center">No image loaded yet.</p>
+        )}
       </div>
 
       <div className="mt-4 flex items-center space-x-4">
@@ -221,7 +234,7 @@ const DwvComponent = () => {
         <button
           value={"toggleOrientation"}
           className="p-2 bg-gray-200 hover:bg-blue-400 rounded-md text-gray-800"
-          onClick={() => toggleOrientation}
+          onClick={toggleOrientation}
         >
           Toggle Orientation
         </button>
